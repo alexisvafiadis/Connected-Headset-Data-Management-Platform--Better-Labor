@@ -25,32 +25,129 @@ This project allowed me to develop a wide range of skills, including full-stack 
 
 ## Project Structure
 
-Although the project does not follow the traditional MVC architecture, it is logically structured with reusable functions and files organized by feature. Most of the file and function names are in French, reflecting the project’s context. The key components are:
+Although the project does not follow the traditional MVC architecture, it is logically structured with reusable functions and files organized by feature. Most of the file and function names are in French. The key components are:
 
-- **Root Files**:
-  - `index.php`: The home page of the application.
-  - `faq.php`, `faq.js`, `faq.css`: Files handling the FAQ page and its interactions.
-  - `send_mail.php`: Used for sending emails via the PHPMailer library.
-  
-- **Folders**:
-  - **`database/`**:
-    - `betterlabor.sql`: The SQL file for setting up the database.
-    - `config.php`: Database configuration.
-    - `connexion.php`: Handles database connection.
-  
-  - **`espace-admin/`**: Contains all files related to the admin dashboard.
-    - `gestion_faq.php`, `gestion_utilisateurs.js`: Admin management features for users and FAQs.
-  
-  - **`espace-chef/`**: The section for company managers.
-    - `ajout_employes.php`, `gestion_utilisateurs.php`: Pages for managing workers.
-  
-  - **`espace-membre/`**: For worker accounts.
-    - `donnees.php`: Displays the worker’s environmental data.
-    - `quiz.php`: The page where workers take quizzes.
-  
-  - **`images/`**: Contains all image assets used in the project, such as icons, badges, and logos.
 
-  - **`libraries/`**: External libraries, including PHPMailer for email functionalities.
+### Root Files
+
+- **`index.php`**: 
+  - This file serves as the entry point to the application. It loads the homepage, which provides users with an overview and allows them to navigate to different parts of the platform depending on their roles (worker, manager, or administrator). It includes general content and logic to route users to their specific dashboard areas.
+  
+- **`faq.php`, `faq.js`, `faq.css`**: 
+  - **`faq.php`**: This PHP file manages the FAQ (Frequently Asked Questions) page, retrieving questions and answers from the database and displaying them to the users. It handles requests for adding, updating, and deleting FAQ entries (for admins) and displays these in a user-friendly format.
+  - **`faq.js`**: This JavaScript file enhances user interaction on the FAQ page, including dynamic searching and filtering of questions. It also supports FAQ submission or editing via AJAX without reloading the page.
+  - **`faq.css`**: Styles the FAQ page, making it visually appealing and ensuring proper layout for FAQ entries.
+
+- **`send_mail.php`**: 
+  - This file handles all email-related functionality within the platform. It uses the PHPMailer library to send emails for account verification, password recovery, or notifications. It's responsible for crafting and sending the emails based on specific events or triggers, such as when a user signs up or requests a password reset.
+
+- **`cgu.php` & `CGU.pdf`**: 
+  - **`cgu.php`**: This file displays the "Conditions Générales d'Utilisation" (Terms of Use) on the website. Users are required to agree to these terms when they sign up. 
+  - **`CGU.pdf`**: A downloadable PDF version of the Terms of Use that users can access from the `cgu.php` page.
+
+- **`contact.php`, `contact.js`, `contact.css`**: 
+  - **`contact.php`**: The backend logic for the contact form, allowing users to send inquiries or feedback to the site administrators. It typically sends emails to the admin team via the `send_mail.php` function.
+  - **`contact.js`**: Adds dynamic behavior to the contact form, ensuring that fields are validated before submission and allowing AJAX form submission to avoid page reloads.
+  - **`contact.css`**: Contains the styling for the contact page to ensure the form looks clean and responsive across devices.
+
+- **`nav.php`**: 
+  - A reusable file for the main navigation menu. It is included across several pages of the project to ensure consistent navigation. This file dynamically adjusts the menu based on the logged-in user's role (worker, manager, admin), displaying the appropriate links and options.
+
+- **`modification.html`, `modification.css`**: 
+  - **`modification.html`**: A static HTML form that provides an interface for modifying specific content on the site, such as user profiles, data, or settings.
+  - **`modification.css`**: Styles the form and ensures it's presented in a user-friendly manner with responsive design considerations.
+
+- **`barre_accueil.php`, `barre_profil.php`, `barre_accueil.css`, `barre_profil.css`**: 
+  - These files are responsible for rendering the header/navigation bar specific to the homepage (`barre_accueil.php`) and profile pages (`barre_profil.php`). The PHP files provide the structure and logic for generating the header, while the corresponding CSS files (`barre_accueil.css`, `barre_profil.css`) style them.
+
+- **`footer.php`, `footer.css`**: 
+  - **`footer.php`**: This file generates the footer that appears on all pages, including links to the privacy policy, terms of use, and other important information.
+  - **`footer.css`**: Styles the footer, ensuring that it remains at the bottom of the page and has a consistent appearance across all screens.
+
+- **`general.css`**: 
+  - A general stylesheet that applies global styles to the entire application, such as font settings, default button styles, layout structure, and other reusable styles that are applied site-wide.
+
+### Folders
+
+#### `database/`
+
+This folder contains files responsible for interacting with the database, including user management, account actions, and data fetching.
+
+- **`betterlabor.sql`**: SQL file used to set up the project's MySQL database.
+- **`config.php`**: Configuration file for database connection details.
+- **`connexion.php`**: Handles user login and session management.
+- **`fetch_data.php`**: Retrieves data from the database, often used for dynamic page content.
+- **`gestion_profil.php`**: Manages user profile updates (e.g., password changes, account details).
+- **`inscription.php`**: Handles user sign-up logic.
+- **`reinitialisation_mdp.php`**: Logic for resetting passwords.
+- **`suppression_compte.php`**: Handles user account deletion.
+- **`tools.php`**: Contains utility functions used throughout the database operations.
+
+#### `espace-admin/`
+
+The admin section of the project allows administrators to manage users, FAQs, and other site content.
+
+- **`connexion.php`**: Login page for administrators.
+- **`espace-admin.css`**: Styles for the admin dashboard.
+- **`FAQManager.php`**: Handles CRUD operations (Create, Read, Update, Delete) for the FAQ content.
+- **`gestion_faq.php`, `gestion_faq.js`**: Manage the FAQ entries, including both server-side logic and front-end interactivity.
+- **`gestion_utilisateurs.js`**: JavaScript for managing users within the admin dashboard.
+- **`index.php`**: The main page of the admin dashboard.
+- **`inscription.php`, `inscription.js`**: Logic for admin or manager sign-up.
+- **`sidebar.php`**: The sidebar component used across all admin pages for navigation.
+
+#### `espace-chef/`
+
+This folder contains all files related to the workspace for **company managers**. Managers can view and manage their workers' environmental data and company information.
+
+- **`ajout_employés.php`, `ajout_employés.css`**: Form and styles for adding new employees to the system.
+- **`index.php`**: Manager’s main dashboard.
+- **`inscription.php`, `inscription.js`**: Handles manager sign-up and worker management logic.
+- **`sidebar.php`**: Sidebar component for easy navigation in the manager’s workspace.
+
+#### `espace-membre/`
+
+The workspace for **workers** using the connected headsets, allowing them to view personal environmental data, take quizzes, and manage their profile.
+
+- **`donnees.php`, `donnees.css`, `donnees.js`**: Displays and styles the environmental data collected by the worker's connected headset, including heart rate, CO2 levels, noise, and sweat.
+- **`quiz.php`, `quiz.css`, `quiz.js`**: Handles the quiz functionality that workers can take to understand workplace safety better.
+- **`modification_profil.php`, `modification_profil_gestionnaire.php`**: Allows workers and managers to modify their profiles.
+- **`activate.php`**: Used to activate worker accounts.
+- **`ajout_badge.php`**: Manages badges awarded to workers based on their quiz performance.
+- **`changement_mdp.php`, `changement_mdp.js`**: Handles password changes for worker accounts.
+- **`connexion.php`**: Login page for workers.
+- **`espace-membre.css`**: General styling for the worker’s dashboard.
+
+#### `espace-utilisateur/`
+
+This section serves as a generic user space. Although most actions happen in more specific workspaces (admin, manager, worker), this folder holds files that allow broader user interaction.
+
+- **`index.php`**: General entry page for users.
+- **`sidebar.php`**: The sidebar navigation for users.
+
+#### `images/`
+
+This folder holds all image assets used across the platform, including icons, logos, and avatars.
+
+#### `libraries/`
+
+Contains third-party libraries integrated into the project to enhance functionality.
+
+- **`nouislider.js`, `nouislider.css`**: Used for creating range sliders in the quiz and data input forms.
+
+#### `nav-from-parent/`
+
+A shared navigation folder that includes reusable components for navigation bars.
+
+- **`barre accueil.php`, `barre profil.php`**: Navigation bars for the home and profile pages.
+- **`nav.php`**: The main navigation file used across different sections of the application.
+
+#### `PHPMailer/`
+
+This is a third-party library that allows the project to handle email functionalities, such as account confirmations, password resets, and notifications.
+
+- **`src/`**: Contains the core PHP files for the PHPMailer library.
+- **`language/`**: Includes language translations for PHPMailer.
 
 ## Technologies Used
 
@@ -70,12 +167,56 @@ Although the project does not follow the traditional MVC architecture, it is log
 
 ### Installation
 
+### Installation
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/better-labor-platform.git
-   cd better-labor-platform
+     ```
+     git clone https://github.com/your-username/better-labor-platform.git
+     cd better-labor-platform
+     ```
 
-2. Set up the database:
-Import the betterlabor.sql file into your MySQL server via phpMyAdmin or another database management tool.
-Configure your database connection in database/config.php.
+3. Set up the database:
+   - **Create the database**:
+     - Log into your MySQL server via phpMyAdmin or another database management tool.
+     - Create a new database (you can name it `betterlabor` or choose another name).
+   - **Import the SQL Schema**:
+     - In phpMyAdmin, select your newly created database.
+     - Use the "Import" tab to upload the `betterlabor.sql` file located in the `database/` folder.
+     
+4. Configure Database Connection:
+   - Open the `config.php` file located in the `database/` folder and update the database credentials with your own. Replace the placeholders with your database name, username, and password.
 
+5. Set Up Email (Optional):
+   - To enable email functionality for password resets and account activation, configure the `send_mail.php` file with your SMTP server credentials. If you're using Gmail, it should look like this:
+      ```
+      $host = "localhost";  // Your database host
+      $username = "your_db_username";  // Your MySQL username
+      $password = "your_db_password";  // Your MySQL password
+      $databaseName = "betterlabor";  // The name of your database
+      ```
+
+6. Accessing the Platform:
+   - Once the installation is complete and the website has been launched:
+     - **User access**: Workers and managers can access their sections of the platform by logging in at the homepage (`index.php`).
+     - **Administrator access**: Administrators must navigate manually to the admin section of the platform by adding `/espace-admin` to the site URL (e.g., `http://localhost/espace-admin`).
+
+7. Administrator Setup:
+   - **Navigate to the Admin Section**: Add `/espace-admin` to the site's URL in your browser's address bar.
+   - **Sign-Up**:
+      - Use the activation code provided by the technical director (generate a 20-character activation code in the database).
+      - Enter your personal information, including a valid email address.
+      - Check your email for the confirmation link and activate your account.
+   - **Logging in**:
+      - After activating your account, return to the admin login page and enter your credentials to access the user management and FAQ management areas.
+
+8. Manage Users and FAQ:
+   - Once logged into the admin dashboard, you can:
+     - **Manage Users**: Add, modify, or delete users (managers and workers).
+     - **Manage FAQ**: Add, modify, or delete FAQ entries. Note that deleting a category will also delete all questions within that category.
+  
+9. Testing the Setup Locally:
+   - To test the platform locally, you can simulate different user roles (administrator, manager, worker) by creating accounts for each role and logging into their respective sections.
+
+     - **Worker Dashboard**: `/espace-membre`
+     - **Manager Dashboard**: `/espace-chef`
+     - **Admin Dashboard**: `/espace-admin`
