@@ -4,24 +4,72 @@
 ## Introduction
 
 The **Better Labor Connected Headset Management Platform** is a web application designed to manage users, and health and environmental data for workers using connected headsets. The project was developed as part of a year-long collaboration among five engineering students at a French engineering school. This repository contains the **Computer Science** component of the project, creating the user interface for administrators, company managers, and workers. The goal was to allow real-time monitoring and management of environmental factors like CO2 levels, sweat, heart rate, and sound exposure to ensure workers' well-being.
-*However, it is only part of the overall project and requires the results of the  Electronics, Signal Processing and Telecommunications components to fully work and integrate headset data to the dashboard in real-time.*
+*However, it is only part of the overall project and requires the results of the  Electronics, Signal Processing and Telecommunications components to integrate headset data to the dashboard in real-time.*
 
 This project allowed me to develop a wide range of skills, including full-stack development, database management, and user experience design, which isn't exactly my strong suit. I contributed extensively to the project, which is why I have forked this repository.
 
+---
+
+
 ## Features & Functionality
 
-- **User Roles**: Supports different user types—administrators, company managers, and workers, each with distinct functionalities.
-  - **Administrators**: Manage users, content, and FAQs.
-  - **Company Managers**: Manage workers, view their environmental data, and take action based on the data.
-  - **Workers**: Access dashboards displaying their headset's health data, manage personal accounts, and take quizzes to learn more about workplace safety.
+The Better Labor platform is built to support a range of functionalities tailored to different user roles, focusing on monitoring environmental factors for workers and enabling smooth management for company administrators and managers.
 
-- **Environmental Monitoring**: Workers' connected headsets measure environmental data such as CO2 levels, noise, sweat, and heart rate. This data is collected and displayed on the platform for analysis.
+### User Roles
 
-- **Content Management**: Administrators can manage the site's content, including FAQs and quizzes.
+The platform distinguishes between three main user roles: administrators, company managers, and workers, each with specific functionalities.
+
+- **Administrators**: 
+  - Have access to an administrative dashboard where they can:
+    - Manage users: add, update, or remove both company managers and workers.
+    - Oversee the content of the platform, such as managing FAQs and quizzes.
+    - Generate secure activation codes for new administrators.
+    - View and analyze platform activity.
   
-- **User Management**: Administrators and managers can add, modify, or remove workers and company users.
+- **Company Managers**:
+  - Have access to the manager dashboard, which allows them to:
+    - Add, modify, or remove workers.
+    - View environmental data from their workers' headsets, such as CO2 levels, heart rate, and noise exposure.
+    - Take action based on the data, such as sending warnings or recommendations (e.g., rehydration alerts based on sweat levels).
+    - Access the FAQ and quizzes related to worker safety.
+
+- **Workers**:
+  - Workers can log into their personal dashboard, where they can:
+    - View real-time and historical data from their connected headsets, which monitors environmental factors like CO2, noise, sweat, and heart rate.
+    - Manage their account settings and update personal information.
+    - Take quizzes to learn about workplace hazards and earn badges based on their scores.
+    - Receive feedback on their health and environmental conditions directly from the dashboard.
+
+### Environmental Monitoring
+
+The platform integrates data from connected headsets worn by workers on construction sites. These headsets measure:
+- **CO2 Levels**: To monitor air quality and warn workers of unsafe levels.
+- **Heart Rate**: For detecting abnormal heart rate levels, which might indicate over-exertion or other health issues.
+- **Sweat Detection**: Provides rehydration alerts based on the amount of sweat detected.
+- **Noise Levels**: Ensures that workers are not exposed to dangerous levels of noise pollution.
+
+All this data is presented to workers and managers through an intuitive dashboard, where real-time metrics and historical trends are easily accessible.
+
+### Content Management
+
+The platform allows administrators to manage all textual content, including:
+- **FAQs**: Frequently Asked Questions can be created, edited, and deleted by the administrators. The FAQ section helps answer common queries related to the platform and workplace safety.
+- **Quizzes**: Quizzes can be created to educate workers on workplace hazards. Workers can take quizzes and earn badges based on their performance, which is reflected in their profiles.
   
-- **Quiz System**: Workers can take quizzes to better understand potential workplace hazards and earn badges based on their scores.
+### User Management
+
+Administrators and managers can manage users in their respective dashboards:
+- **Administrators** can manage both company managers and workers. They have the ability to create new administrator accounts and manage permissions.
+- **Managers** can only manage their assigned workers, adding or removing them as necessary. They can also monitor workers’ health and environmental data in real-time.
+
+### Quiz System
+
+The platform includes an educational component in the form of quizzes. Workers can take quizzes to:
+- Learn about potential workplace dangers, including CO2 exposure, dehydration risks, and noise-induced hearing loss.
+- Earn badges for their profile based on quiz performance.
+
+---
+
 
 ## Project Structure
 
@@ -52,10 +100,6 @@ Although the project does not follow the traditional MVC architecture, it is log
 
 - **`nav.php`**: 
   - A reusable file for the main navigation menu. It is included across several pages of the project to ensure consistent navigation. This file dynamically adjusts the menu based on the logged-in user's role (worker, manager, admin), displaying the appropriate links and options.
-
-- **`modification.html`, `modification.css`**: 
-  - **`modification.html`**: A static HTML form that provides an interface for modifying specific content on the site, such as user profiles, data, or settings.
-  - **`modification.css`**: Styles the form and ensures it's presented in a user-friendly manner with responsive design considerations.
 
 - **`barre_accueil.php`, `barre_profil.php`, `barre_accueil.css`, `barre_profil.css`**: 
   - These files are responsible for rendering the header/navigation bar specific to the homepage (`barre_accueil.php`) and profile pages (`barre_profil.php`). The PHP files provide the structure and logic for generating the header, while the corresponding CSS files (`barre_accueil.css`, `barre_profil.css`) style them.
@@ -149,6 +193,9 @@ This is a third-party library that allows the project to handle email functional
 - **`src/`**: Contains the core PHP files for the PHPMailer library.
 - **`language/`**: Includes language translations for PHPMailer.
 
+---
+
+
 ## Technologies Used
 
 - **PHP**: The core backend language for handling server-side logic.
@@ -157,6 +204,44 @@ This is a third-party library that allows the project to handle email functional
 - **Chart.js**: Library for displaying environmental data as interactive charts.
 - **noUiSlider**: For user-friendly slider inputs.
 - **PHPMailer**: Used for sending emails with attachments.
+
+---
+
+## Project Evaluation
+
+### 1. Quality and Performance Overview
+This section highlights some aspects of the quality of the final website.
+
+- **Usefulness**: Great functionality.
+  
+- **Cross-Browser Compatibility**: Works well across major browsers.
+
+- **Security**: Decent, but can be improved.
+
+- **User-Friendliness**: Easy to use, but some areas could be more intuitive.
+
+- **Responsive Design**: Mediocre, needs better adaptation to mobile and window resize.
+
+- **Aesthetics**: Functional, but most of the website lacks visual appeal.
+
+---
+
+### 2. Areas for Improvement
+
+Below are some suggestions for improving the platform based on user feedback and internal assessments:
+
+- **Language Selection**: Implementing multi-language support would improve the platform’s accessibility for non-French-speaking users. A language toggle could be introduced in the header or settings.
+  
+- **User Addition/Banning from Admin Space**: Adding the ability for administrators to ban or restore users directly from the admin panel would enhance control over user management.
+
+- **Design Enhancements**: Pages such as "Découvrir," "Accueil," and "Nous" need a design overhaul. Improving their aesthetic appeal and adapting the layout for all screen resolutions would greatly enhance user satisfaction.
+
+- **Responsive Design Improvements**: To address the issues with responsiveness, the platform should undergo redesigns to work seamlessly on all devices, particularly mobile phones and tablets.
+
+- **Ticketing System**: Adding a ticketing system where workers and managers can submit issues or feedback directly would improve communication and streamline problem resolution.
+
+---
+
 
 ## Setup & Installation
 
