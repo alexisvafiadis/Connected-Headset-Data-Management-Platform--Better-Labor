@@ -75,6 +75,11 @@ The platform includes an educational component in the form of quizzes. Workers c
 
 Although the project does not follow the traditional MVC architecture, it is logically structured with reusable functions and files organized by feature. Most of the file and function names are in French. The key components are:
 
+### Entity-Relationship Diagram (ERD)
+Below is the Entity-Relationship Diagram of the database.
+
+<img src="conceptual_model.png" alt="Entity-Relationship Diagram" width="700px">
+
 
 ### Root Files
 
