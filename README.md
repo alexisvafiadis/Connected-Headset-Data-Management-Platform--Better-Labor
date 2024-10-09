@@ -215,7 +215,6 @@ This is a third-party library that allows the project to handle email functional
 ## Project Evaluation
 
 ### 1. Quality and Performance Overview
-This section highlights some aspects of the quality of the final website.
 
 - **Usefulness**: Great functionality.
   
@@ -232,8 +231,6 @@ This section highlights some aspects of the quality of the final website.
 ---
 
 ### 2. Areas for Improvement
-
-Below are some suggestions for improving the platform based on user feedback and internal assessments:
 
 - **Language Selection**: Implementing multi-language support would improve the platform’s accessibility for non-French-speaking users. A language toggle could be introduced in the header or settings.
   
