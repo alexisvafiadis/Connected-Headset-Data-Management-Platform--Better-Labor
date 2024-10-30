@@ -254,8 +254,6 @@ This is a third-party library that allows the project to handle email functional
 
 ### Installation
 
-### Installation
-
 1. Clone the repository:
      ```
      git clone https://github.com/your-username/better-labor-platform.git
